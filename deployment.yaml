@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: react-app
+  name: react-app-deployment
+spec:
+  replicas: 6
+  selector:
+    matchLabels:
+      app: react-app
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: react-app
+    spec:
+      containers:
+      - image: devopsmonk/react-app:v1
+        name: react-app-container
+        imagePullPolicy: Always
+        ports: 
+        - containerPort: 3000
